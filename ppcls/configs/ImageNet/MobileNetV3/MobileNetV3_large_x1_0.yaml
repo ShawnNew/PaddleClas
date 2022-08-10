@@ -3,7 +3,7 @@ Global:
   checkpoints: null
   pretrained_model: null
   output_dir: ./output/
-  device: gpu
+  device: mlu
   save_interval: 1
   eval_during_train: True
   eval_interval: 1
@@ -47,8 +47,8 @@ DataLoader:
   Train:
     dataset:
       name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/train_list.txt
+      image_root: ./dataset/imagenet/train
+      cls_label_path: ./dataset/train_shuffled.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
@@ -76,8 +76,8 @@ DataLoader:
   Eval:
     dataset: 
       name: ImageNetDataset
-      image_root: ./dataset/ILSVRC2012/
-      cls_label_path: ./dataset/ILSVRC2012/val_list.txt
+      image_root: ./dataset/imagenet/val/
+      cls_label_path: ./dataset/val_shuffled.txt
       transform_ops:
         - DecodeImage:
             to_rgb: True
